@@ -1,0 +1,171 @@
+{
+  "kind": "collectionType",
+  "collectionName": "social_posts",
+  "info": {
+    "singularName": "social-post",
+    "pluralName": "social-posts",
+    "displayName": "Social Media Post",
+    "description": "Social media content with platform-specific metadata"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": "Social media posts for multiple platforms"
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "content": {
+      "type": "richtext",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "platforms": {
+      "type": "enumeration",
+      "enum": ["facebook", "instagram", "twitter", "linkedin", "tiktok", "youtube"],
+      "multiple": true,
+      "required": true
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["draft", "scheduled", "published", "failed", "archived"],
+      "default": "draft",
+      "required": true
+    },
+    "scheduledAt": {
+      "type": "datetime"
+    },
+    "publishedAt": {
+      "type": "datetime"
+    },
+    "timezone": {
+      "type": "string",
+      "default": "UTC"
+    },
+    "media": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "videos", "files"]
+    },
+    "hashtags": {
+      "type": "json",
+      "default": []
+    },
+    "mentions": {
+      "type": "json",
+      "default": []
+    },
+    "platformSpecific": {
+      "type": "json",
+      "default": {
+        "facebook": {
+          "pageId": "",
+          "targetAudience": "",
+          "callToAction": ""
+        },
+        "instagram": {
+          "accountId": "",
+          "firstComment": "",
+          "locationTag": ""
+        },
+        "twitter": {
+          "threadMode": false,
+          "threadPosts": []
+        },
+        "linkedin": {
+          "visibility": "public",
+          "companyPage": ""
+        },
+        "tiktok": {
+          "privacy": "public",
+          "allowComments": true,
+          "allowDuet": true,
+          "allowStitch": true
+        },
+        "youtube": {
+          "title": "",
+          "description": "",
+          "category": "",
+          "privacy": "public",
+          "tags": []
+        }
+      }
+    },
+    "campaign": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::campaign.campaign",
+      "inversedBy": "posts"
+    },
+    "template": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::content-template.content-template"
+    },
+    "analytics": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::analytics.analytics",
+      "mappedBy": "post"
+    },
+    "approvalWorkflow": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::approval-workflow.approval-workflow",
+      "mappedBy": "post"
+    },
+    "abTestVariant": {
+      "type": "string"
+    },
+    "originalPost": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::social-post.social-post"
+    },
+    "seoMetadata": {
+      "type": "json",
+      "default": {
+        "metaTitle": "",
+        "metaDescription": "",
+        "keywords": [],
+        "ogImage": ""
+      }
+    },
+    "externalIds": {
+      "type": "json",
+      "default": {
+        "facebook": "",
+        "instagram": "",
+        "twitter": "",
+        "linkedin": "",
+        "tiktok": "",
+        "youtube": ""
+      }
+    },
+    "publishErrors": {
+      "type": "json",
+      "default": []
+    },
+    "author": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    }
+  }
+}

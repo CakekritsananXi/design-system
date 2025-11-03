@@ -1,0 +1,119 @@
+{
+  "kind": "collectionType",
+  "collectionName": "analytics",
+  "info": {
+    "singularName": "analytics",
+    "pluralName": "analytics",
+    "displayName": "Analytics",
+    "description": "Real-time analytics and performance metrics"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": "Analytics data for social media posts"
+  },
+  "attributes": {
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::social-post.social-post",
+      "inversedBy": "analytics"
+    },
+    "platform": {
+      "type": "enumeration",
+      "enum": ["facebook", "instagram", "twitter", "linkedin", "tiktok", "youtube"],
+      "required": true
+    },
+    "impressions": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "reach": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "engagement": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "likes": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "comments": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "shares": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "saves": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "clicks": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "views": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "watchTime": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "conversions": {
+      "type": "biginteger",
+      "default": 0
+    },
+    "engagementRate": {
+      "type": "decimal",
+      "default": 0
+    },
+    "clickThroughRate": {
+      "type": "decimal",
+      "default": 0
+    },
+    "conversionRate": {
+      "type": "decimal",
+      "default": 0
+    },
+    "sentiment": {
+      "type": "json",
+      "default": {
+        "positive": 0,
+        "neutral": 0,
+        "negative": 0
+      }
+    },
+    "demographics": {
+      "type": "json",
+      "default": {
+        "age": {},
+        "gender": {},
+        "location": {},
+        "device": {}
+      }
+    },
+    "topPerformingContent": {
+      "type": "json",
+      "default": []
+    },
+    "hourlyData": {
+      "type": "json",
+      "default": []
+    },
+    "dailyData": {
+      "type": "json",
+      "default": []
+    },
+    "lastSyncedAt": {
+      "type": "datetime"
+    },
+    "rawData": {
+      "type": "json",
+      "default": {}
+    }
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "name": "social-media-cms",
+  "version": "1.0.0",
+  "description": "Enterprise-grade Social Media Content Management System built with Strapi v5",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "format": "prettier --write \"src/**/*.{ts,tsx,json}\"",
+    "typecheck": "tsc --noEmit"
+  },
+  "keywords": [
+    "strapi",
+    "cms",
+    "social-media",
+    "content-management",
+    "facebook",
+    "instagram",
+    "twitter",
+    "linkedin",
+    "tiktok",
+    "youtube"
+  ],
+  "author": "Social Media CMS Team",
+  "license": "MIT",
+  "dependencies": {
+    "@strapi/strapi": "^5.0.0",
+    "@strapi/plugin-users-permissions": "^5.0.0",
+    "@strapi/plugin-i18n": "^5.0.0",
+    "@strapi/plugin-cloud": "^5.0.0",
+    "@strapi/plugin-graphql": "^5.0.0",
+    "axios": "^1.6.0",
+    "date-fns": "^3.0.0",
+    "date-fns-tz": "^2.0.0",
+    "node-cron": "^3.0.3",
+    "jsonwebtoken": "^9.0.2",
+    "bcryptjs": "^2.4.3",
+    "ioredis": "^5.3.2",
+    "bull": "^4.12.0",
+    "twitter-api-v2": "^1.16.0",
+    "facebook-nodejs-business-sdk": "^18.0.0",
+    "linkedin-api-client": "^1.2.0",
+    "googleapis": "^126.0.0",
+    "sharp": "^0.33.0",
+    "lodash": "^4.17.21",
+    "validator": "^13.11.0",
+    "winston": "^3.11.0",
+    "helmet": "^7.1.0",
+    "rate-limiter-flexible": "^4.0.0",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/jest": "^29.5.0",
+    "@types/node-cron": "^3.0.11",
+    "@types/bull": "^4.10.0",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.50.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.0",
+    "prettier": "^3.0.0",
+    "supertest": "^6.3.0",
+    "@types/supertest": "^6.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=8.0.0"
+  },
+  "strapi": {
+    "uuid": "social-media-cms-uuid"
+  }
+}

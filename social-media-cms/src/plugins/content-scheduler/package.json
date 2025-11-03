@@ -1,0 +1,23 @@
+{
+  "name": "content-scheduler",
+  "version": "1.0.0",
+  "description": "Content Scheduler Plugin with Cron Job Management",
+  "strapi": {
+    "name": "content-scheduler",
+    "displayName": "Content Scheduler",
+    "description": "Schedule and automate content publishing",
+    "kind": "plugin"
+  },
+  "dependencies": {
+    "node-cron": "^3.0.3",
+    "date-fns": "^3.0.0",
+    "date-fns-tz": "^2.0.0"
+  },
+  "peerDependencies": {
+    "@strapi/strapi": "^5.0.0"
+  },
+  "author": {
+    "name": "Social Media CMS Team"
+  },
+  "license": "MIT"
+}

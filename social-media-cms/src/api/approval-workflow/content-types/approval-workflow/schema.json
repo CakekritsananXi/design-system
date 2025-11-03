@@ -1,0 +1,82 @@
+{
+  "kind": "collectionType",
+  "collectionName": "approval_workflows",
+  "info": {
+    "singularName": "approval-workflow",
+    "pluralName": "approval-workflows",
+    "displayName": "Approval Workflow",
+    "description": "Content approval and review workflow"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": "Workflow for content approval process"
+  },
+  "attributes": {
+    "post": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::social-post.social-post",
+      "inversedBy": "approvalWorkflow"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["pending", "in_review", "approved", "rejected", "needs_revision"],
+      "default": "pending",
+      "required": true
+    },
+    "submittedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "submittedAt": {
+      "type": "datetime"
+    },
+    "reviewers": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user"
+    },
+    "currentReviewer": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "approvedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "approvedAt": {
+      "type": "datetime"
+    },
+    "rejectedBy": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "rejectedAt": {
+      "type": "datetime"
+    },
+    "comments": {
+      "type": "json",
+      "default": []
+    },
+    "revisionHistory": {
+      "type": "json",
+      "default": []
+    },
+    "priority": {
+      "type": "enumeration",
+      "enum": ["low", "medium", "high", "urgent"],
+      "default": "medium"
+    },
+    "dueDate": {
+      "type": "datetime"
+    },
+    "notificationsSent": {
+      "type": "json",
+      "default": []
+    }
+  }
+}

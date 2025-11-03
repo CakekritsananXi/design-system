@@ -1,0 +1,105 @@
+{
+  "kind": "collectionType",
+  "collectionName": "campaigns",
+  "info": {
+    "singularName": "campaign",
+    "pluralName": "campaigns",
+    "displayName": "Campaign",
+    "description": "Marketing campaigns with performance tracking"
+  },
+  "options": {
+    "draftAndPublish": true,
+    "comment": "Social media campaigns"
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "text"
+    },
+    "startDate": {
+      "type": "date",
+      "required": true
+    },
+    "endDate": {
+      "type": "date"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": ["planning", "active", "paused", "completed", "archived"],
+      "default": "planning",
+      "required": true
+    },
+    "budget": {
+      "type": "decimal",
+      "default": 0
+    },
+    "currency": {
+      "type": "string",
+      "default": "USD"
+    },
+    "goals": {
+      "type": "json",
+      "default": {
+        "impressions": 0,
+        "reach": 0,
+        "engagement": 0,
+        "conversions": 0,
+        "clicks": 0
+      }
+    },
+    "targetAudience": {
+      "type": "json",
+      "default": {
+        "ageRange": [],
+        "gender": [],
+        "location": [],
+        "interests": [],
+        "languages": []
+      }
+    },
+    "posts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::social-post.social-post",
+      "mappedBy": "campaign"
+    },
+    "templates": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::content-template.content-template",
+      "inversedBy": "campaigns"
+    },
+    "tags": {
+      "type": "json",
+      "default": []
+    },
+    "team": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user"
+    },
+    "manager": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "performanceMetrics": {
+      "type": "json",
+      "default": {
+        "totalImpressions": 0,
+        "totalReach": 0,
+        "totalEngagement": 0,
+        "totalClicks": 0,
+        "totalConversions": 0,
+        "roi": 0,
+        "costPerClick": 0,
+        "costPerConversion": 0,
+        "engagementRate": 0
+      }
+    }
+  }
+}
