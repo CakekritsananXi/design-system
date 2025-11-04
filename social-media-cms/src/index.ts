@@ -33,6 +33,16 @@ export default {
   async bootstrap({ strapi }) {
     strapi.log.info('Bootstrapping Social Media CMS...');
 
+    // Initialize monitoring service
+    try {
+      const MonitoringService = require('./utils/monitoring').default;
+      strapi.monitoring = new MonitoringService(strapi);
+      strapi.monitoring.initialize();
+      strapi.log.info('Monitoring service initialized');
+    } catch (error) {
+      strapi.log.error('Failed to initialize monitoring service:', error);
+    }
+
     // Initialize content scheduler
     try {
       const scheduler = strapi.plugin('content-scheduler')?.service('scheduler');
